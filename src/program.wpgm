@@ -1,0 +1,30 @@
+import wollok.game.*
+import auto.*
+
+program miPrimerWollokGame{
+	
+	game.title("Autito y pared")
+	
+	//tamaño del tablero
+	game.height(8)
+	game.width(14)
+	
+	//background
+	game.boardGround("empedrado.jpg")
+	game.addVisual(pared)
+	
+	//agregamos objetos
+	game.addVisualCharacter(auto)
+	
+	game.say(auto, "hola, cuidado con las paredes")
+	
+	game.whenCollideDo(pared,
+		{auto1 => game.removeVisual(auto1)
+		game.addVisual(fuego)
+		game.say(fuego, "poom")
+		})
+	
+	//iniciar el juego
+	game.start()
+}
+
